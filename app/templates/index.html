@@ -1,26 +1,13 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 <div class="container">
   <p id="clock"></p>
 </div>
 
+<p id="id_time" hidden>{{ timeid }}</p>
 
 <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
-
-<script>
-  var socket = io.connect(location.origin);
-
-  var clock = document.querySelector("#clock");
-
-  socket.on('connect', () => {
-    socket.emit('user response', {{ timeid }});
-  });
-
-  socket.on('client response', (msg) => {
-    clock.textContent = msg.data;
-  });
-</script>
+<script src="{{ url_for('static', filename='js/websocket.js')}}"></script>
 
 {% endblock %}
