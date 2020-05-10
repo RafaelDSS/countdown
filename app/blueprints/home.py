@@ -22,7 +22,7 @@ def generate(id):
 def home(id):
     return render_template('index.html', timeid=id)
 
-@socketio.on('user response')
+@socketio.on('server response')
 def response(msg):
     generate(msg)
     emit('client response', {'data': 'Expirado'})

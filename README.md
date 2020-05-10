@@ -6,5 +6,5 @@
 $ flask db init
 $ flask db migrate 
 $ flask db ugrade
-$ python wsgi.py
+$ python run.py
 ```
