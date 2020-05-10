@@ -19,7 +19,6 @@
   });
 
   socket.on('client response', (msg) => {
-    console.log(msg.data);
     clock.textContent = msg.data;
   });
 </script>
