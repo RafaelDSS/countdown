@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+  <p id="clock"></p>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
+
+<script>
+  var socket = io.connect(location.origin);
+
+  var clock = document.getElementById("clock");
+
+  socket.on('connect', () => {
+    socket.emit('user response', {{ timeid }});
+  });
+
+  socket.on('client response', (msg) => {
+    console.log(msg.data);
+    clock.textContent = msg.data;
+  });
+</script>
+
+{% endblock %}
