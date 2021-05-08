@@ -3,7 +3,7 @@ astroid==2.3.3
 Babel==2.8.0
 Click==7.0
 dnspython==1.16.0
-eventlet==0.25.2
+eventlet==0.31.0
 Flask==1.1.1
 Flask-Admin==1.5.4
 Flask-Babel==0.12.2
