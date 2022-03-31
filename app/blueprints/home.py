@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, g, Response, request
 from datetime import datetime
 import time
 from app.models.tables import CountDown
-from app.ext.websocket import socketio
+from app.extensions.websocket import socketio
 from flask_socketio import emit, send
 import eventlet
 
@@ -26,7 +26,7 @@ def home(id):
 def response(msg):
     generate(msg)
     emit('client response', {'data': 'Expirado'})
-    
+
 
 def configure(app):
     app.register_blueprint(app_home)

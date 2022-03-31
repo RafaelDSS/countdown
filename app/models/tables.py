@@ -1,5 +1,4 @@
-from app.ext.db import db
-import datetime
+from app.extensions.db import db
 
 class CountDown(db.Model):
     __tablename__ = 'countdown'

@@ -1,12 +1,13 @@
+from datetime import datetime, timedelta
+
+from flask import url_for
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-from flask_admin.model import BaseModelView
-from app.models.tables import CountDown
-from app.ext.db import db
-from datetime import datetime, timedelta
-from dateutil import tz
-import time
 from wtforms.validators import DataRequired
+from markupsafe import Markup
+
+from app.models.tables import CountDown
+from app.extensions.db import db
 
 
 admin = Admin(name='Count Down')
@@ -29,13 +30,15 @@ class CustomModelView(ModelView):
         }
     }
     column_formatters = {
-        'time': dateFormat
+        'time': dateFormat,
+        'id': lambda view, context, model, name: Markup(f"<a href='{url_for('home.home', id=model.id)}'>{model.id}<a>")
     }
     form_widget_args = {
         'time': {
-            'data-date-format': u'HH:mm:ss',
+            'data-date-format': u'hh:mm:ss',
             'data-role': 'timepicker',
-            'autocomplete': 'off'
+            'autocomplete': 'off',
+            'value': '00:00:00'
         }
     }
 

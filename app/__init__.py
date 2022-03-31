@@ -1,6 +1,6 @@
 from flask import Flask
 from app.blueprints import home
-from app.ext import db, migrate, admin, babel, websocket
+from app.extensions import db, migrate, admin, babel, websocket
 
 
 def create_app(config='config.Config'):
