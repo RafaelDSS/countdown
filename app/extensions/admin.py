@@ -22,11 +22,11 @@ def dateFormat(view, context, model, name):
 
 class CustomModelView(ModelView):
     column_display_pk = True
-    column_labels = dict(id='ID', time='Tempo')
+    column_labels = dict(id='ID', time='Tempo (H:M)')
     form_args = {
         'time': {
             'validators': [DataRequired()],
-            'format': '%H:%M:%S'
+            'format': '%H:%M'
         }
     }
     column_formatters = {
@@ -35,10 +35,10 @@ class CustomModelView(ModelView):
     }
     form_widget_args = {
         'time': {
-            'data-date-format': u'hh:mm:ss',
+            'data-date-format': u'HH:mm',
             'data-role': 'timepicker',
             'autocomplete': 'off',
-            'value': '00:00:00'
+            'value': '00:00'
         }
     }
 
